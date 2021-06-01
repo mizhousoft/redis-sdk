@@ -9,7 +9,7 @@
 		<version>1.1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.mizhousoft.redis</groupId>
+	<groupId>com.mizhousoft.sdk</groupId>
 	<artifactId>redis-sdk</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>

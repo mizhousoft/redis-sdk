@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.mizhousoft.redis</groupId>
+		<groupId>com.mizhousoft.sdk</groupId>
 		<artifactId>redis-sdk</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
