@@ -225,7 +225,7 @@ public class LettuceRedisClient implements RedisClient
 		Builder builder = RedisURI.builder().withDatabase(database).withHost(host).withPort(port);
 		if (!StringUtils.isBlank(password))
 		{
-			builder.withPassword(password);
+			builder.withPassword(password.toCharArray());
 		}
 
 		if (timeout > 0)
