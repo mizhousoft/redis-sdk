@@ -3,6 +3,7 @@ package com.mizhousoft.redis.lettuce.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mizhousoft.redis.ScoreValue;
 import com.mizhousoft.redis.codec.Codec;
 import com.mizhousoft.redis.command.ZSetCommand;
 import com.mizhousoft.redis.lettuce.client.LettuceRedisClient;
@@ -89,17 +90,19 @@ public class LettuceZSetCommand extends AbstractRedisCommand implements ZSetComm
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> List<T> zrangeWithScores(String key, long start, long stop, Codec<T> codec)
+	public <T> List<ScoreValue<T>> zrangeWithScores(String key, long start, long stop, Codec<T> codec)
 	{
 		RedisCommands<String, String> redisCommands = redisClient.getRedisCommands();
 
 		List<ScoredValue<String>> values = redisCommands.zrangeWithScores(key, start, stop);
 
-		List<T> results = new ArrayList<>(values.size());
+		List<ScoreValue<T>> results = new ArrayList<>(values.size());
 		for (ScoredValue<String> value : values)
 		{
 			T t = codec.decode(value.getValue());
-			results.add(t);
+
+			ScoreValue<T> v = new ScoreValue<T>(t, value.getScore());
+			results.add(v);
 		}
 
 		return results;
@@ -129,17 +132,19 @@ public class LettuceZSetCommand extends AbstractRedisCommand implements ZSetComm
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> List<T> zrevrangeWithScores(String key, long start, long stop, Codec<T> codec)
+	public <T> List<ScoreValue<T>> zrevrangeWithScores(String key, long start, long stop, Codec<T> codec)
 	{
 		RedisCommands<String, String> redisCommands = redisClient.getRedisCommands();
 
 		List<ScoredValue<String>> values = redisCommands.zrevrangeWithScores(key, start, stop);
 
-		List<T> results = new ArrayList<>(values.size());
+		List<ScoreValue<T>> results = new ArrayList<>(values.size());
 		for (ScoredValue<String> value : values)
 		{
 			T t = codec.decode(value.getValue());
-			results.add(t);
+
+			ScoreValue<T> v = new ScoreValue<T>(t, value.getScore());
+			results.add(v);
 		}
 
 		return results;

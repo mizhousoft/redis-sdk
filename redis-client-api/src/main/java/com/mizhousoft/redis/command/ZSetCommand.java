@@ -2,6 +2,7 @@ package com.mizhousoft.redis.command;
 
 import java.util.List;
 
+import com.mizhousoft.redis.ScoreValue;
 import com.mizhousoft.redis.codec.Codec;
 
 /**
@@ -61,7 +62,7 @@ public interface ZSetCommand
 	 * @param codec
 	 * @return
 	 */
-	<T> List<T> zrangeWithScores(String key, long start, long stop, Codec<T> codec);
+	<T> List<ScoreValue<T>> zrangeWithScores(String key, long start, long stop, Codec<T> codec);
 
 	/**
 	 * 获取数据
@@ -85,7 +86,7 @@ public interface ZSetCommand
 	 * @param codec
 	 * @return
 	 */
-	<T> List<T> zrevrangeWithScores(String key, long start, long stop, Codec<T> codec);
+	<T> List<ScoreValue<T>> zrevrangeWithScores(String key, long start, long stop, Codec<T> codec);
 
 	/**
 	 * 删除最小的一个

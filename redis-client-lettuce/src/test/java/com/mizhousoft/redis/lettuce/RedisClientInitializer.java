@@ -15,7 +15,7 @@ public abstract class RedisClientInitializer
 		RedisConfiguration configuration = new RedisConfiguration();
 		configuration.setHostName("localhost");
 		configuration.setPort(6379);
-		configuration.setPassword("redis123");
+	//	configuration.setPassword("redis123");
 
 		LettuceRedisClient redisClient = new LettuceRedisClient(configuration);
 		redisClient.initialize();

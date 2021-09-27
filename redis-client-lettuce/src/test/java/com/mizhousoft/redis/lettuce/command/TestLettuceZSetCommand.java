@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mizhousoft.redis.ScoreValue;
 import com.mizhousoft.redis.codec.JsonJacksonCodec;
 import com.mizhousoft.redis.command.ZSetCommand;
 import com.mizhousoft.redis.lettuce.RedisClientInitializer;
@@ -96,8 +97,8 @@ public class TestLettuceZSetCommand
 		list = zsetComand.zrevrange(key, 0, 10, codec);
 		System.out.println(list.size());
 
-		list = zsetComand.zrangeWithScores(key, 0, 10, codec);
-		System.out.println(list.size());
+		List<ScoreValue<TestUser>> scoreList = zsetComand.zrangeWithScores(key, 0, 10, codec);
+		System.out.println(scoreList.size());
 
 		List<TestUser> listx = zsetComand.zpopmin(key, 2, codec);
 		Assert.assertEquals(2, listx.size());
