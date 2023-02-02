@@ -21,7 +21,7 @@ public class RedisConfiguration
 	private int database;
 
 	// 密码
-	private String password;
+	private volatile String password;
 
 	// 超时时间，单位是秒
 	private int timeout;
