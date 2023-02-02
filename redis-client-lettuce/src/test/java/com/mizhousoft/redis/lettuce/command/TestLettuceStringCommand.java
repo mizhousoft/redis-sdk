@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.lettuce.RedisClientInitializer;
 import com.mizhousoft.redis.lettuce.client.LettuceRedisClient;
@@ -20,7 +20,7 @@ public class TestLettuceStringCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();
@@ -35,18 +35,18 @@ public class TestLettuceStringCommand
 		redisClient.getStringCommand().set(key, value);
 
 		String result = redisClient.getStringCommand().get(key);
-		Assert.assertEquals(value, result);
+		Assertions.assertEquals(value, result);
 
 		redisClient.del(key);
 
 		redisClient.getStringCommand().setex(key, value, 2);
 		result = redisClient.getStringCommand().get(key);
-		Assert.assertEquals(value, result);
+		Assertions.assertEquals(value, result);
 
 		TimeUnit.SECONDS.sleep(2);
 
 		result = redisClient.getStringCommand().get(key);
-		Assert.assertEquals(null, result);
+		Assertions.assertEquals(null, result);
 	}
 
 	@Test
@@ -66,13 +66,13 @@ public class TestLettuceStringCommand
 
 		String[] keys = { key1, key2 };
 		Map<String, String> resultMap = redisClient.getStringCommand().mget(keys);
-		Assert.assertEquals(value1, resultMap.get(key1));
-		Assert.assertEquals(value2, resultMap.get(key2));
+		Assertions.assertEquals(value1, resultMap.get(key1));
+		Assertions.assertEquals(value2, resultMap.get(key2));
 
 		redisClient.del(key1, key2);
 
 		String result = redisClient.getStringCommand().get(key2);
-		Assert.assertEquals(null, result);
+		Assertions.assertEquals(null, result);
 	}
 
 	@Test
@@ -81,10 +81,10 @@ public class TestLettuceStringCommand
 		String key = "testIncrement";
 
 		long result = redisClient.getStringCommand().incr(key, 2);
-		Assert.assertEquals(2, result);
+		Assertions.assertEquals(2, result);
 
 		result = redisClient.getStringCommand().decrby(key, 3);
-		Assert.assertEquals(-1, result);
+		Assertions.assertEquals(-1, result);
 
 		redisClient.del(key);
 	}

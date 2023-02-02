@@ -1,7 +1,7 @@
 package com.mizhousoft.redis.lettuce.command;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.codec.IntegerCodec;
 import com.mizhousoft.redis.command.SetCommand;
@@ -17,7 +17,7 @@ public class TestLettuceSetCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();

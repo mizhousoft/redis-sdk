@@ -3,8 +3,8 @@ package com.mizhousoft.redis.lettuce.command;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.lettuce.RedisClientInitializer;
 import com.mizhousoft.redis.lettuce.client.LettuceRedisClient;
@@ -18,7 +18,7 @@ public class TestLettuceHashCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();

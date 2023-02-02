@@ -2,9 +2,9 @@ package com.mizhousoft.redis.lettuce.command;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.command.KeyCommand;
 import com.mizhousoft.redis.lettuce.RedisClientInitializer;
@@ -19,7 +19,7 @@ public class TestLettuceKeyCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();
@@ -34,12 +34,12 @@ public class TestLettuceKeyCommand
 		redisClient.getStringCommand().set(key, value);
 
 		boolean result = redisClient.exists(key);
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 
 		redisClient.del(key);
 
 		result = redisClient.exists(key);
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 
 	@Test
@@ -51,14 +51,14 @@ public class TestLettuceKeyCommand
 		redisClient.getStringCommand().set(key, value);
 
 		boolean result = redisClient.exists(key);
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 
 		redisClient.expire(key, 3);
 
 		TimeUnit.SECONDS.sleep(4);
 
 		result = redisClient.exists(key);
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 
 	@Test
@@ -70,14 +70,14 @@ public class TestLettuceKeyCommand
 		redisClient.getStringCommand().set(key, value);
 
 		boolean result = redisClient.exists(key);
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 
 		redisClient.expireat(key, System.currentTimeMillis() / 1000 + 10);
 
 		TimeUnit.SECONDS.sleep(10);
 
 		result = redisClient.exists(key);
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 
 	@Test
@@ -89,7 +89,7 @@ public class TestLettuceKeyCommand
 		redisClient.getStringCommand().set(key, value);
 
 		long time = redisClient.ttl(key);
-		Assert.assertEquals(time, KeyCommand.KEY_NO_EXPIRE);
+		Assertions.assertEquals(time, KeyCommand.KEY_NO_EXPIRE);
 
 		redisClient.del(key);
 	}

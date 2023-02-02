@@ -2,9 +2,9 @@ package com.mizhousoft.redis.lettuce.command;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.ScoreValue;
 import com.mizhousoft.redis.codec.JsonJacksonCodec;
@@ -21,7 +21,7 @@ public class TestLettuceZSetCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();
@@ -89,7 +89,7 @@ public class TestLettuceZSetCommand
 		zsetComand.zadd(key, 62, user, codec);
 
 		long count = zsetComand.zcard(key);
-		Assert.assertEquals(12, count);
+		Assertions.assertEquals(12, count);
 
 		List<TestUser> list = zsetComand.zrange(key, 0, 10, codec);
 		System.out.println(list.size());
@@ -101,10 +101,10 @@ public class TestLettuceZSetCommand
 		System.out.println(scoreList.size());
 
 		List<TestUser> listx = zsetComand.zpopmin(key, 2, codec);
-		Assert.assertEquals(2, listx.size());
+		Assertions.assertEquals(2, listx.size());
 
 		count = zsetComand.zcard(key);
-		Assert.assertEquals(4, count);
+		Assertions.assertEquals(4, count);
 
 		list = zsetComand.zrange(key, 0, 10, codec);
 		System.out.println(list.size());

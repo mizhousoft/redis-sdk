@@ -3,9 +3,9 @@ package com.mizhousoft.redis.lettuce.command;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mizhousoft.redis.lettuce.RedisClientInitializer;
 import com.mizhousoft.redis.lettuce.RedisUser;
@@ -20,7 +20,7 @@ public class TestLettuceObjectCommand
 {
 	LettuceRedisClient redisClient;
 
-	@Before
+	@BeforeEach
 	public void before()
 	{
 		this.redisClient = RedisClientInitializer.build();
@@ -38,7 +38,7 @@ public class TestLettuceObjectCommand
 		redisClient.getObjectCommand().set(key, user);
 
 		RedisUser result = redisClient.getObjectCommand().get(key, RedisUser.class);
-		Assert.assertEquals(user.getPhoneNumber(), result.getPhoneNumber());
+		Assertions.assertEquals(user.getPhoneNumber(), result.getPhoneNumber());
 
 		redisClient.del(key);
 	}
@@ -67,7 +67,7 @@ public class TestLettuceObjectCommand
 		String[] keys = { key1, key2 };
 
 		Map<String, RedisUser> resultMap = redisClient.getObjectCommand().mget(RedisUser.class, keys);
-		Assert.assertNotNull(resultMap.get(key1));
+		Assertions.assertNotNull(resultMap.get(key1));
 
 		redisClient.del(keys);
 	}
