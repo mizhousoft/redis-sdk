@@ -3,7 +3,7 @@
 set -e
 set -u
 
-REDIS_VERSION=5.0.14
+REDIS_VERSION=6.2.10
 REDIS_INSTALL_DIR=/opt/mizhousoft/redis
 
 wget http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz
@@ -25,5 +25,7 @@ sed -i 's/^databases.*/databases 16/g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
 sed -i 's:^dir .*:dir /opt/mizhousoft/redis/data:g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
 sed -i 's/^save 60 10000.*/save 60 100/g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
 sed -i 's/^# requirepass.*/requirepass redis123/g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
+sed -i 's/^bind 127.0.0.1.*/bind 127.0.0.1/g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
+sed -i 's:^pidfile /var/run/redis_6379.pid:pidfile /opt/mizhousoft/logs/redis/redis_6379.pid:g' ${REDIS_INSTALL_DIR}/conf/redis_6379.conf
 
 chmod +x ${REDIS_INSTALL_DIR}/redis.sh

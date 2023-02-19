@@ -15,7 +15,7 @@ REDISPORT=6379
 EXEC=/opt/mizhousoft/redis/bin/redis-server
 CLIEXEC=/opt/mizhousoft/redis/bin/redis-cli
 
-PIDFILE=/var/run/redis_${REDISPORT}.pid
+PIDFILE=/opt/mizhousoft/logs/redis/redis_${REDISPORT}.pid
 CONF="/opt/mizhousoft/redis/conf/redis_${REDISPORT}.conf"
 
 mkdir -p /opt/mizhousoft/logs/redis
