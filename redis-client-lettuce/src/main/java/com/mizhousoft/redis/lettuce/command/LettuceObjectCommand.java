@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.collections4.map.HashedMap;
-
 import com.mizhousoft.commons.json.JSONException;
 import com.mizhousoft.commons.json.JSONUtils;
 import com.mizhousoft.redis.RedisException;
@@ -167,7 +165,7 @@ public class LettuceObjectCommand extends AbstractRedisCommand implements Object
 	{
 		Map<String, String> values = redisClient.getStringCommand().mget(keys);
 
-		Map<String, T> resultMap = new HashedMap<>(values.size());
+		Map<String, T> resultMap = new HashMap<>(values.size());
 
 		Iterator<Entry<String, String>> iter = values.entrySet().iterator();
 		while (iter.hasNext())
