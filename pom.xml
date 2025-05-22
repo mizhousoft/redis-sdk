@@ -6,19 +6,19 @@
 	<parent>
 		<groupId>com.mizhousoft</groupId>
 		<artifactId>mizhousoft-bom</artifactId>
-		<version>2.1.2-SNAPSHOT</version>
+		<version>2.1.2</version>
 	</parent>
 
 	<groupId>com.mizhousoft.sdk</groupId>
 	<artifactId>redis-sdk</artifactId>
-	<version>2.1.2-SNAPSHOT</version>
+	<version>2.1.2</version>
 	<packaging>pom</packaging>
 	<name>redis-sdk</name>
 	<description>Redis SDK</description>
 
 	<properties>
-		<commons.version>2.1.2-SNAPSHOT</commons.version>
-		<redis.version>2.1.2-SNAPSHOT</redis.version>
+		<commons.version>2.1.2</commons.version>
+		<redis.version>2.1.2</redis.version>
 	</properties>
 
 	<modules>
