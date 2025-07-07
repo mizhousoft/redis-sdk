@@ -3,7 +3,7 @@
 set -e
 set -u
 
-REDIS_VERSION=6.2.18
+REDIS_VERSION=6.2.19
 REDIS_INSTALL_DIR=/opt/mizhousoft/redis
 
 wget http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz
