@@ -12,14 +12,14 @@
 ### END INIT INFO
 
 REDISPORT=6379
-EXEC=/opt/mizhousoft/redis/bin/redis-server
-CLIEXEC=/opt/mizhousoft/redis/bin/redis-cli
+EXEC=/opt/middleware/redis/bin/redis-server
+CLIEXEC=/opt/middleware/redis/bin/redis-cli
 
-PIDFILE=/opt/mizhousoft/logs/redis/redis_${REDISPORT}.pid
-CONF="/opt/mizhousoft/redis/conf/redis_${REDISPORT}.conf"
+PIDFILE=/opt/middleware/redis/logs/redis_${REDISPORT}.pid
+CONF="/opt/middleware/redis/conf/redis_${REDISPORT}.conf"
 
-mkdir -p /opt/mizhousoft/logs/redis
-mkdir -p /opt/mizhousoft/redis/data
+mkdir -p /opt/middleware/redis/logs
+mkdir -p /opt/middleware/redis/data
 
 case "$1" in
     start)
