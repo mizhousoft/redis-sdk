@@ -29,6 +29,6 @@ sed -i 's:^dir .*:dir /opt/middleware/redis/data:g' ${REDIS_INSTALL_DIR}/conf/re
 sed -i 's/^save 60 10000.*/save 60 100/g' ${REDIS_INSTALL_DIR}/conf/redis_8379.conf
 sed -i 's/^# requirepass.*/requirepass redis123/g' ${REDIS_INSTALL_DIR}/conf/redis_8379.conf
 sed -i 's/^bind 127.0.0.1.*/bind 127.0.0.1/g' ${REDIS_INSTALL_DIR}/conf/redis_8379.conf
-sed -i 's:^pidfile /var/run/redis_6379.pid:pidfile /var/run/redis_8379.pid:g' ${REDIS_INSTALL_DIR}/conf/redis_8379.conf
+sed -i 's:^pidfile /var/run/redis_6379.pid:pidfile /opt/middleware/redis/logs/redis_8379.pid:g' ${REDIS_INSTALL_DIR}/conf/redis_8379.conf
 
 chmod +x ${REDIS_INSTALL_DIR}/redis.sh
