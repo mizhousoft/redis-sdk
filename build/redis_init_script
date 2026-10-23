@@ -38,16 +38,16 @@ case "$1" in
         else
                 PID=$(cat $PIDFILE)
                 echo "Stopping ..."
-				
-				cat $CONF | grep '^requirepass' > /dev/null 2>&1
-				if [ $? -eq 0 ]; then
-					passwd=`cat $CONF | grep '^requirepass' | awk -F' ' '{print $2}'`
-					
-					$CLIEXEC -p $REDISPORT -a $passwd shutdown > /dev/null 2>&1
-				else 
-					$CLIEXEC -p $REDISPORT shutdown
-				fi
-				
+                
+                cat $CONF | grep '^requirepass' > /dev/null 2>&1
+                if [ $? -eq 0 ]; then
+                    passwd=`cat $CONF | grep '^requirepass' | awk -F' ' '{print $2}'`
+                    
+                    $CLIEXEC -p $REDISPORT -a $passwd shutdown > /dev/null 2>&1
+                else 
+                    $CLIEXEC -p $REDISPORT shutdown
+                fi
+                
                 while [ -x /proc/${PID} ]
                 do
                     echo "Waiting for Redis to shutdown ..."
